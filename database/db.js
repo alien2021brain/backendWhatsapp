@@ -14,7 +14,7 @@ const Connection = async (username, password) => {
     })
     .then(() => console.log('DB Connected!'))
     .catch(err => {
-    console.log(DB Connection Error: ${err.message});
+    console.log(`DB Connection Error: ${err.message}`);
     });
 
 };
