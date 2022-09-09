@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
-const serverless=require("serverless-http")
+
 
 import Connection from './database/db.js';
 import Routes from './routes/Routes.js';
@@ -25,5 +25,3 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use('/', Routes);
 
-module.exports=app;
-module.exports.handler=serverless(app);
