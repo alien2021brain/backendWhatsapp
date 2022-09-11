@@ -19,18 +19,18 @@ const password = process.env.DB_PASSWORD;
 
 Connection(username, password);
 
-app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
+
 
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use('/', Routes);
 
-//socket Io
-const io = new Server(process.env.PORT || 9000, {
+
+// sockrt ionp
+const io = new Server(PORT, {
     cors: {
-        origin: '',
-        methods: ['GET', 'POST']
+        origin: 'http://localhost:3000',
     }, 
 })
 
@@ -70,5 +70,7 @@ io.on('connection',  (socket) => {
         removeUser(socket.id);
         io.emit('getUsers', users);
     })
-}) 
+})
+
+
 
