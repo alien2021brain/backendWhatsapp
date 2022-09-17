@@ -1,9 +1,9 @@
-import { Server } from 'socket.io';
+
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
-
+import{Server} from "socket.io"
 
 import Connection from './database/db.js';
 import Routes from './routes/Routes.js';
@@ -12,7 +12,7 @@ import Routes from './routes/Routes.js';
 dotenv.config();
 const app = express();
 
-const PORT =process.env.PORT || 8000;
+const PORT = 8000;
 
 const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
@@ -26,9 +26,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use('/', Routes);
 
+app.listen(PORT,()=>{
+    console.log(`server is running on port ${PORT}`)
+})
+
 
 // sockrt ionp
-const io = new Server(PORT, {
+const io = new Server(9000, {
     cors: {
         origin: 'https://whats-app-web.onrender.com',
     }, 
